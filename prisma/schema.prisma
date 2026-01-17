@@ -1,7 +1,24 @@
 datasource db {
-     provider = "postgresql"
-   }
+ provider = "postgresql"
+}
 
-   generator client {
-     provider = "prisma-client-js"
-   }
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  MODERATOR
+  USER
+}
+
+// ================= USERS =================
+model User {
+  id           String   @id @default(cuid())
+  fullName     String
+  email        String   @unique
+  password     String
+  role         Role
+}
+
+// ================= BLOGS =================

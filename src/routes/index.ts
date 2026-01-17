@@ -1,5 +1,6 @@
 import express from "express";
 import BlogRoutes from "./blog/route";
+import AuthRoutes from "./authRoute/route";
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -12,5 +13,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/blog", BlogRoutes);
+router.use("/auth", AuthRoutes);
 
 export default router;

@@ -12,7 +12,7 @@ export const signupValidator = [
     .notEmpty()
     .isLength({ min: 6 })
     .withMessage("Password must be more than 6 characters long"),
-  body("role").isIn(["ADMIN", "MODERATOR", "USER"]).withMessage("Invalid role"),
+  body("role").isIn(["ADMIN", "SUPERADMIN", "EDITOR"]).withMessage("Invalid role"),
 ];
 
 export const loginValidator = [

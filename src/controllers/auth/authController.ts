@@ -57,7 +57,7 @@ export const Login = expressAsyncHandler(async (req, res) => {
       res.status(401).json({ message: "Invalid email or password" });
       return;
     }
-    res.status(200).json({ message: "Login Successful" });
+    res.status(200).json({ message: "Login Successful", user });
   } catch (error: any) {
     res
       .status(500)

@@ -3,18 +3,20 @@ import {
   createBlog,
   deleteBlog,
   editBlog,
+  getBlog,
 } from "../../controllers/blog/blogController";
 import {
   createBlogValidator,
   deleteBlogValidator,
   updateBlogValidator,
 } from "../../validators/blogValidator";
+import { upload } from "../../middleware/upload";
 
 const router = express.Router();
 
-router.post("/blog", createBlogValidator, createBlog);
-router.put("/blog", updateBlogValidator, editBlog);
-router.delete("/blog", deleteBlogValidator, deleteBlog);
-router.get("/blog", deleteBlog);
+router.post("/blog", upload.single("media"), createBlogValidator, createBlog);
+router.put("/blog/:id", updateBlogValidator, upload.single("media"), editBlog);
+router.delete("/blog/:id", deleteBlogValidator, deleteBlog);
+router.get("/blog", getBlog);
 
 export default router;

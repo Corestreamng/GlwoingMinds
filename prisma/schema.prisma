@@ -27,12 +27,13 @@ model Blog {
   category  String
   title     String
   author    String
-  excerpt   String
-  content   String
+  excerpt   String   @db.Text
+  content   String   @db.LongText
   img_url   String
   slug      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
 
 // ================= BLOGS =================
